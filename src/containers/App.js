@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary'
 import './app.css'
 
 // pass down state to component; special
@@ -44,7 +45,9 @@ class App extends Component { // parent APP controls state and owns robot so can
           <h1>RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange}/>
           <Scroll>
-            <CardList robots={filteredRobots}/>
+            <ErrorBoundary>
+              <CardList robots={filteredRobots}/>
+            </ErrorBoundary>
           </Scroll>
         </div>
       );
